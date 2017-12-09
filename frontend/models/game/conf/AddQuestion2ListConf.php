@@ -23,8 +23,6 @@ class AddQuestion2ListConf extends ExecuteConfAbs
 			new GenerateNewVariablesJob(),
 			new InsertNewEquation2DbJob(),
 			new LoadEquationListFromDbJob(),
-			// new AddUserResult2EquationJob(),
-			// new AddList2DbJob(),
 		];
 	}
 }
