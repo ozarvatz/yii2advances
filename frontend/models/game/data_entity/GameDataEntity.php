@@ -14,7 +14,10 @@ class GameDataEntity implements IData
 	const USER_RESULT = 'user_result';
 
 	const EQUATION_LIST = 'equation_list';
-	CONST AREQUATION_LIST = 'arEquationList';
+	const AREQUATION_LIST = 'arEquationList';
+	const EQUATION_ARRAY = 'equation_array';
+	const MODEL_ARRAY = 'model_array';
+
 
 	private $data;	
 

@@ -42,8 +42,9 @@ class IndexAction extends Action
 		$arEquationList = $gameData->get(GameDataEntity::AREQUATION_LIST, GameDataEntity::EQUATION_LIST);
 		$model = $gameData->get('model', GameDataEntity::INPUT_PARAMS);
 
-		return $this->controller->render('index',
+		// return $this->controller->render('async_jqueary',
 		// return $this->controller->render('async',
+		return $this->controller->render('index',
 		[
 			GameDataEntity::AREQUATION_LIST => $arEquationList,
 			'model' => $model,

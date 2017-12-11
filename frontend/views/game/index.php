@@ -9,6 +9,7 @@ use app\models\game\data_entity\GameDataEntity;
 $this->title = 'Game';
 $this->params['breadcrumbs'][] = $this->title;
 
+$asyncUrl = Yii::$app->request->hostInfo . Yii::$app->urlManager->createUrl('game/async');
 
 ?>
 <div class="site-contact">
@@ -17,7 +18,13 @@ $this->params['breadcrumbs'][] = $this->title;
     <p>
         Time to play the game!!! 
     </p>
-
+    <?= Html::checkbox('play async', false, 
+        ['label' => 'Play asynchronously',
+         'id' => 'play-async',
+         'onclick' => "if(this.checked) {window.location.href ='{$asyncUrl}'}" 
+         // 'onclick' => "alert('pach')" 
+         ]);
+    ?>
     <?php  
     	foreach ($arEquationList as &$arEquation) 
     	{
@@ -62,3 +69,14 @@ $this->params['breadcrumbs'][] = $this->title;
             <?php ActiveForm::end(); ?>
         </div>
     </div>
+</div>
+
+<script type="text/javascript">
+    $( document ).ready(function(){
+        // if(('#play-async').prop(':checked')) {
+        //         window.location.href = "<?=Yii::$app->urlManager->createUrl('game/async');?>";
+        // };
+
+        
+    });
+</script>

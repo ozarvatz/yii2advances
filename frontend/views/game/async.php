@@ -1,19 +1,10 @@
 <?php
 use aki\vue\Vue;
-?>
-<?php 
-Html::a('Your Link name','controller/action', [
-'title' => Yii::t('yii', 'Close'),
-    'onclick'=>"$('#close').dialog('open');//for jui dialog in my page
-     $.ajax({
-    type     :'POST',
-    cache    : false,
-    url  : 'controller/action',
-    success  : function(response) {
-        $('#close').html(response);
-    }
-    });return false;",
-                ]);
+use yii\helpers\Html;
+use yii\helpers\Url;
+
+// $this->registerJsFile("https://cdn.jsdelivr.net/npm/axios@0.12.0/dist/axios.min.js");
+// $this->registerJsFile("https://cdn.jsdelivr.net/npm/lodash@4.13.1/lodash.min.js");
 ?>
 <?php Vue::begin([
     'id' => "vue-app",
@@ -28,21 +19,40 @@ Html::a('Your Link name','controller/action', [
     'methods' => [
         'reverseMessage' => new yii\web\JsExpression("function(){"
                 . "this.message =1; "
-                . "}"),
-    //     'getList' => new yii\web\JsExpression("
-    //     	function(){
-    //     		this.axios.get().then( (response) => {
-				//     console.log(response) // this logs correctly
-				//     this.message = response;
-				// })
-    //     	}"
-    //     ),
+                . "},"),
+        'getList' => new yii\web\JsExpression("
+        	function(){
+        		
+	     //    		$.ajax({
+				  //       url: \"" . Url::base() . 'game/data' . "\",
+						// type: \"GET\",
+				  //       dataType: \"text\",
+				  //       success: function(data) {
+		    //     			alert(data);
+		    //     		},
+		    //     		error: function(data) {
+		    //     			alert(\"error:\" + data);
+		    //     		}
+		    //     	})
+        		this.http.get(\"/someUrl\").then(response => {
+
+				    // get body data
+				    alert(response.body);
+
+				  }, response => {
+				    // error callback
+				    alert(\"error\" + response);
+				  });
+
+			        
+        	}"
+        ),
 
     ]
 ]); ?>
     
     <p>{{ message }}</p>
-    <button v-on:click="reverseMessage">Reverse Message</button>
+    <button v-on:click="getList">Reverse Message</button>
     
     <p v-if="seen">Now you see me</p>
     
