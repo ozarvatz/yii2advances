@@ -8,14 +8,13 @@ use yii\db\Migration;
 class m171207_123125_oz_add_answered_field_to_math_tbl extends Migration
 {
     
-    public function up()
+    public function safeUp()
     {
-        $this->execute("
-            ALTER TABLE `math` ADD `answered` TINYINT NOT NULL DEFAULT '0' AFTER `answer`;
-        ");
+    	$this->addColumn('math', 'answered', $this->smallInteger(5)->notNull()->defaultValue(-1)->after('answer'));
     }
 
-    public function down()
+    public function safeDown()
     {
+    	$this->dropColumn('math', 'answered');
     }
 }

@@ -5,8 +5,7 @@ use app\models\game\job\GenerateNewVariablesJob;
 use app\models\game\job\AddEquation2DbJob;
 use app\models\game\job\InsertNewEquation2DbJob;
 use app\models\game\job\LoadEquationListFromDbJob;
-// use app\models\game\job\AddUserResult2EquationJob;
-// use app\models\game\job\AddList2DbJob;
+
 
 class AddQuestion2ListConf extends ExecuteConfAbs
 {

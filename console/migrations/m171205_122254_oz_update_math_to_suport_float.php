@@ -8,15 +8,13 @@ use yii\db\Migration;
 class m171205_122254_oz_update_math_to_suport_float extends Migration
 {
     
-    public function up()
+    public function safeUp()
     {
-        $this->execute("
-            ALTER TABLE `math` CHANGE `result` `result` FLOAT(32) NOT NULL;
-        ");
+    	$this->alterColumn('math', 'result', $this->double()->notNull());
     }
 
-    public function down()
+    public function safeDown()
     {
-        
+        $this->alterColumn('math', 'result', $this->integer());
     }
 }
